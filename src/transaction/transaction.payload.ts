@@ -10,7 +10,7 @@ registerEnumType(Status, {
 });
 
 @InputType()
-export class CreateTransaction{
+export class TransactionPayload{
     
     @Field()
     status:Status;

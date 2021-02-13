@@ -21,11 +21,8 @@ export class TransactionEntity{
     @Field(type => ID, { nullable: false })
     id:number;
 
-    @PrimaryGeneratedColumn({
-        name : 'invoiceNo',
-        unsigned : true
-    })
-    @Field(type => uuid, { nullable: false })
+    @Column()
+    @Field(type => String, { nullable: false })
     invoiceNo: string;
 
     @Column({

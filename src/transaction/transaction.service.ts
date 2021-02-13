@@ -2,7 +2,8 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { TransactionEntity } from "./transaction.entity";
 import { Repository } from "typeorm";
-import { CreateTransaction } from './transaction.payload'
+import { TransactionPayload } from './transaction.payload'
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class TransactionService{
@@ -10,15 +11,15 @@ export class TransactionService{
         @InjectRepository(TransactionEntity) private transactionRepository: Repository<TransactionEntity>
     ){};
 
-    async findCourse(id:number): Promise<TransactionEntity>{
+    async findTransaction(id:number): Promise<TransactionEntity>{
         return this.transactionRepository.findOne({id})
     };
     
-    async allCourse(): Promise<TransactionEntity[]>{
+    async allTransaction(): Promise<TransactionEntity[]>{
         return this.transactionRepository.find()
     }
 
-    async createTransaction(createTransaction : CreateTransaction) : Promise<TransactionEntity>{
+    async createTransaction(createTransaction : TransactionPayload) : Promise<TransactionEntity>{
         const { status } = createTransaction;
         const transaction = this.transactionRepository.create({
             status

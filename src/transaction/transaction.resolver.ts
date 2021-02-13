@@ -10,15 +10,15 @@ export class TransactionResolver{
     )  {};
     
     @Query(returns => TransactionType)
-    course(
+    transaction(
         @Args('id') id: number,
     ){
-        return this.transactionService.findCourse(id)
+        return this.transactionService.findTransaction(id)
     };
 
     @Query(returns => [TransactionType])
-    allCourse() {
-        return this.transactionService.allCourse()
+    allTransaction() {
+        return this.transactionService.allTransaction()
     };
 
 
