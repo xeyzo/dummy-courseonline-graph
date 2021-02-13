@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from 'typeorm';
 import { Field, registerEnumType, ID, Int, ObjectType } from '@nestjs/graphql';
 
 export enum Status{
@@ -20,6 +20,7 @@ export class TransactionType{
     @Field(type => ID, { nullable: false })
     id:number;
 
+    @PrimaryColumn()
     @Field(type => String, { nullable: false })
     invoiceNo: string;
 
