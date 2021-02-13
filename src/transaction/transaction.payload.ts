@@ -14,4 +14,8 @@ export class TransactionPayload{
     
     @Field()
     status:Status;
+
+    @Field()
+    invoiceNo:string;
+
 }

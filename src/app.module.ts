@@ -13,7 +13,8 @@ import { TrainerModule } from './trainer/trainer.module';
     TypeOrmModule.forRoot(typeOrmConfig), 
     GraphQLModule.forRoot({
       autoSchemaFile : true
-    }), UserModule, AuthModule, CourseModule, TransactionModule, TrainerModule
+    }), 
+    UserModule, AuthModule, CourseModule, TransactionModule, TrainerModule
   ],
 })
 export class AppModule {}
