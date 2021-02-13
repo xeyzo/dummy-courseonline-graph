@@ -3,8 +3,9 @@ import { Field, registerEnumType, ID, Int } from '@nestjs/graphql';
 import { v4 as uuid } from 'uuid';
 
 export enum Status{
-    admin,
-    user
+    paid,
+    pending,
+    cancel
 }
 
 registerEnumType(Status, {

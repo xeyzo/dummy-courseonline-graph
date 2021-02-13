@@ -1,13 +1,7 @@
 import { InputType, registerEnumType, Field } from "@nestjs/graphql";
+import { Status } from './transaction.entity'
 
-export enum Status{
-    admin,
-    user
-}
 
-registerEnumType(Status, {
-    name: 'Status',
-});
 
 @InputType()
 export class TransactionPayload{

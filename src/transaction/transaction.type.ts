@@ -1,14 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from 'typeorm';
 import { Field, registerEnumType, ID, Int, ObjectType } from '@nestjs/graphql';
-
-export enum Status{
-    admin,
-    user
-}
-
-registerEnumType(Status, {
-    name: 'Status',
-});
+import { Status } from './transaction.entity'
 
 
 @ObjectType()
