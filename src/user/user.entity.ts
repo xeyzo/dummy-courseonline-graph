@@ -50,8 +50,7 @@ export class UserEntity{
     @Field(type => Role)
     role:Role;
 
-    @OneToMany(() => TransactionEntity, transaction => transaction.userId)
-    @Field(type => [TransactionEntity], { nullable:true })
-    transaction : TransactionEntity[]; 
+    @OneToMany(() => TransactionEntity, user => user.userId)
+    userTransaction: TransactionEntity[]; 
 
 }

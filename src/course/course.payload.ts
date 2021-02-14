@@ -18,7 +18,4 @@ export class CreateCourse{
 
     @Field()
     price: number;
-
-    @Field()
-    trainerId: number;
 }

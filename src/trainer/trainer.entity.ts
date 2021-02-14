@@ -26,6 +26,5 @@ export class TrainerEntity{
     age:number;
 
     @OneToMany(() => CourseEntity, course => course.trainerId)
-    @Field(type => [CourseEntity], { nullable:true })
-    course : CourseEntity[]; 
+    course: CourseEntity[];
 }

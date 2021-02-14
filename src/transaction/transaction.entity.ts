@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToOne } from 'typeorm';
 import { Field, registerEnumType, ID, Int } from '@nestjs/graphql';
 import { v4 as uuid } from 'uuid';
+import { UserEntity } from 'src/user/user.entity';
 
 export enum Status{
     paid,
@@ -26,12 +27,8 @@ export class TransactionEntity{
     @Field(type => String, { nullable: false })
     invoiceNo: string;
 
-    @Column({
-        name: 'id_user',
-        type: 'int'
-    })
-    @Field(type => Int, { nullable:true })
-    userId:number;
+    @ManyToOne(() => UserEntity, user => user.userTransaction)
+    userId: UserEntity;
 
     @Column()
     @Field(type => Status)
