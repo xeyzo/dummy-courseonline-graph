@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Field, registerEnumType, ID } from '@nestjs/graphql';
 import { TransactionEntity } from '../transaction/transaction.entity'
+import { UserCourseEntity } from '../config/user-course.entity'
 
 export enum Role{
     admin,
@@ -52,5 +53,9 @@ export class UserEntity{
     @OneToMany(() => TransactionEntity, user => user.userId)
     @Field(type => TransactionEntity, { nullable : true })
     userTransaction: TransactionEntity[];
+
+    @OneToMany(() => UserCourseEntity, userCourse => userCourse.userId)
+    @Field(() => UserCourseEntity, { nullable:true })
+    courseUser: UserCourseEntity;
 
 }

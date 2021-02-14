@@ -1,7 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
 import { Field, registerEnumType, ID, Int } from '@nestjs/graphql';
+import { UserEntity } from '../user/user.entity'
+import { CourseEntity } from '../course/course.entity'
 
-
+@Entity()
 export class UserCourseEntity{
     @PrimaryGeneratedColumn({
         name : 'id',
@@ -10,12 +12,12 @@ export class UserCourseEntity{
     @Field(type => Int, { nullable : true })
     id : number
 
-    @Column()
-    @Field(type => Int, { nullable:true })
-    userId:number;
+    @ManyToOne(()=> UserEntity, user => user.courseUser)
+    @Field(type => [UserEntity], { nullable:true })
+    userId:UserEntity;
 
-    @Column()
-    @Field(type => Int, { nullable:true })
-    courseId:number;
-
+    @OneToOne(() => CourseEntity )
+    @JoinColumn()
+    @Field(type => CourseEntity, {nullable: true})
+    courseId:CourseEntity;
 }
