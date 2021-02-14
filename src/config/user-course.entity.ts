@@ -14,4 +14,8 @@ export class UserCourseEntity{
     @Column()
     @ManyToOne(() => UserEntity, user => user.courseReview)
     userId: UserEntity;
+
+    usercourse relation
+
+
 }

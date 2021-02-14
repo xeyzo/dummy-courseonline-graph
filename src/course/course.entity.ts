@@ -1,7 +1,10 @@
-import { Entity, PrimaryColumn, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryColumn, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, ManyToMany, OneToMany } from 'typeorm';
 import { ObjectType, Field, ID, Int } from "@nestjs/graphql";
 import { CartEntity } from  '../config/cart.entity'
 import { TrainerEntity } from '../trainer/trainer.entity'
+import { CourseReviewEntity } from '../config/course-review.entity'
+import { UserCourseEntity } from 'src/config/user-course.entity';
+
 @Entity()
 export class CourseEntity{
     
@@ -25,9 +28,11 @@ export class CourseEntity{
     price : number;
 
     @ManyToOne(() => TrainerEntity, trainer => trainer.course)
-    trainerId: CartEntity;
+    trainerId: CartEntity[];
     
     @ManyToOne(() => CartEntity, cart => cart.courseId)
-    courseId: CartEntity;
+    courseId: CartEntity[];
     
+    @OneToMany(() => CourseReviewEntity, review => review.courseId)
+    courseReview : CourseReviewEntity[];
 }
