@@ -15,7 +15,7 @@ export class CartEntity{
     @OneToOne(() => UserEntity )
     @JoinColumn()
     @Field()
-    userId:number;
+    userId:UserEntity;
 
     @OneToMany(() => CourseEntity, course => course.cartCourse)
     @Field(type => CourseEntity, { nullable : true })
