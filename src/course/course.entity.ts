@@ -3,6 +3,8 @@ import { ObjectType, Field, ID, Int } from "@nestjs/graphql";
 import { CartEntity } from  '../config/cart.entity'
 import { TrainerEntity } from '../trainer/trainer.entity'
 import { WhislistEntity } from '../config/wishlist.entity'
+import { TransactionDetailEntity } from '../config/transaction-detail.entity'
+
 @Entity()
 export class CourseEntity{
     
@@ -35,4 +37,8 @@ export class CourseEntity{
     @ManyToOne(() => WhislistEntity, whislist => whislist.courseId)
     @Field(type => [WhislistEntity], {nullable : true})
     whislistCourse: WhislistEntity;
+
+    @ManyToOne(() => TransactionDetailEntity, transactionDetail => transactionDetail.courseId)
+    @Field(type => [TransactionDetailEntity], { nullable: true} )
+    transactionCourse: TransactionDetailEntity; 
 }
