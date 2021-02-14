@@ -2,7 +2,6 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Field, registerEnumType, ID } from '@nestjs/graphql';
 import { TransactionEntity } from '../transaction/transaction.entity'
 
-
 export enum Role{
     admin,
     user
@@ -51,6 +50,7 @@ export class UserEntity{
     role:Role;
 
     @OneToMany(() => TransactionEntity, user => user.userId)
+    @Field(type => TransactionEntity, { nullable : true })
     userTransaction: TransactionEntity[];
 
 }

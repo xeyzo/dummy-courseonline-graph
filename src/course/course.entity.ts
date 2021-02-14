@@ -1,9 +1,10 @@
-import { Entity, PrimaryColumn, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryColumn, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { ObjectType, Field, ID, Int } from "@nestjs/graphql";
 import { CartEntity } from  '../config/cart.entity'
 import { TrainerEntity } from '../trainer/trainer.entity'
 import { WhislistEntity } from '../config/wishlist.entity'
 import { TransactionDetailEntity } from '../config/transaction-detail.entity'
+import { CourseReviewEntity } from '../config/course-review.entity'
 
 @Entity()
 export class CourseEntity{
@@ -40,5 +41,9 @@ export class CourseEntity{
 
     @ManyToOne(() => TransactionDetailEntity, transactionDetail => transactionDetail.courseId)
     @Field(type => [TransactionDetailEntity], { nullable: true} )
-    transactionCourse: TransactionDetailEntity; 
+    transactionCourse: TransactionDetailEntity;
+    
+    @OneToMany(() => CourseReviewEntity, courseReview => courseReview.courseId)
+    @Field(type => CourseReviewEntity, { nullable : true })
+    reviewCourse : CourseReviewEntity[];
 }
