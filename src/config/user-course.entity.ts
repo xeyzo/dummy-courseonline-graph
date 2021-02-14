@@ -12,10 +12,10 @@ export class UserCourseEntity{
     id : number
 
     @Column()
-    @ManyToOne(() => UserEntity, user => user.courseReview)
+    @ManyToOne(() => UserEntity, user => user.courseUser)
     userId: UserEntity;
 
-    usercourse relation
+    // usercourse relation
 
 
 }

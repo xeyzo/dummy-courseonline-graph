@@ -3,7 +3,7 @@ import { Field, registerEnumType, ID } from '@nestjs/graphql';
 import { TransactionEntity } from '../transaction/transaction.entity'
 import { CourseEntity } from '../course/course.entity'
 import { CourseReviewEntity } from '../config/course-review.entity'
-
+import { UserCourseEntity } from '../config/user-course.entity'
 
 export enum Role{
     admin,
@@ -55,10 +55,9 @@ export class UserEntity{
     @OneToMany(() => TransactionEntity, transaction => transaction.userId)
     transaction : TransactionEntity[]; 
 
-    @OneToMany(() => CourseEntity, course => course.trainerId)
-    course : CourseEntity[];
-
-    @OneToMany(() => CourseReviewEntity, courseReview => courseReview.courseId)
+    @OneToMany(() => CourseReviewEntity, courseReview => courseReview.userId)
     courseReview : CourseReviewEntity[];
 
+    @OneToMany(() => UserCourseEntity, courseUser => courseUser.userId)
+    courseUser : CourseReviewEntity[];
 }
