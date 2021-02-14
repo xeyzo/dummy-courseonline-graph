@@ -1,6 +1,6 @@
 import { Entity, PrimaryColumn, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { ObjectType, Field, ID, Int } from "@nestjs/graphql";
-import { TrainerEntity } from '../trainer/trainer.entity'
+import { CartEntity } from  '../config/cart.entity'
 
 @Entity()
 export class CourseEntity{
@@ -31,4 +31,9 @@ export class CourseEntity{
     @Field(type => Int, { nullable: true })
     trainerId: number;
     
+
+    // @ManyToOne(() => CartEntity, cart => cart.courseId)
+    // @Field(type => [CartEntity], { nullable: true })
+    // cart : CartEntity[];
+
 }
