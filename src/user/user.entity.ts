@@ -1,6 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Field, registerEnumType, ID } from '@nestjs/graphql';
 import { TransactionEntity } from '../transaction/transaction.entity'
+import { CourseEntity } from '../course/course.entity'
+import { CourseReviewEntity } from '../config/course-review.entity'
 
 
 export enum Role{
@@ -51,7 +53,12 @@ export class UserEntity{
     role:Role;
 
     @OneToMany(() => TransactionEntity, transaction => transaction.userId)
-    @Field(type => [TransactionEntity], { nullable:true })
     transaction : TransactionEntity[]; 
+
+    @OneToMany(() => CourseEntity, course => course.trainerId)
+    course : CourseEntity[];
+
+    @OneToMany(() => CourseReviewEntity, courseReview => courseReview.courseId)
+    courseReview : CourseReviewEntity[];
 
 }

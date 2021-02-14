@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToOne } from 'typeorm';
 import { Field, registerEnumType, ID, Int } from '@nestjs/graphql';
+import { UserEntity } from '../user/user.entity'
 
 
 export class UserCourseEntity{
@@ -11,11 +12,6 @@ export class UserCourseEntity{
     id : number
 
     @Column()
-    @Field(type => Int, { nullable:true })
-    userId:number;
-
-    @Column()
-    @Field(type => Int, { nullable:true })
-    courseId:number;
-
+    @ManyToOne(() => UserEntity, user => user.courseReview)
+    userId: UserEntity;
 }
