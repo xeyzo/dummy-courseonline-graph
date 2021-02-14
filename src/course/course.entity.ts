@@ -27,4 +27,8 @@ export class CourseEntity{
 
     @ManyToOne(() => TrainerEntity, trainer => trainer.course)
     trainerId: TrainerEntity;
+
+    @ManyToOne(() => CartEntity, cart => cart.courseId)
+    @Field(type => [CartEntity], {nullable : true})
+    cartCourse: CartEntity;
 }

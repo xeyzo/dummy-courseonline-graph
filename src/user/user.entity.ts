@@ -51,6 +51,6 @@ export class UserEntity{
     role:Role;
 
     @OneToMany(() => TransactionEntity, user => user.userId)
-    userTransaction: TransactionEntity[]; 
+    userTransaction: TransactionEntity[];
 
 }
