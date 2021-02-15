@@ -1,4 +1,4 @@
-- Auth
+#Auth
 - [x] User harus Register
 - [ ] User Login menggunakan email dan password
 - [ ] Login menghasilkan jsonwebtoken
