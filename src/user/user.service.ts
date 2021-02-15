@@ -13,7 +13,7 @@ export class UserService{
     ) {}
     
     async createUser(createUser : CreateUser): Promise<UserEntity>{       
-        const { firstname, lastname, email, password, phonenumber, github, role} = createUser;  
+        const { firstname, lastname, email, password, phonenumber, github, role} = createUser;
         const user = this.userRepository.create({
             firstname,
             lastname,
@@ -24,5 +24,8 @@ export class UserService{
             role
         })
         return this.userRepository.save(user)
+    }
+    private async hashPassword (password: string, salt: string){
+        return bcrypt.hash(password, salt)
     }
 }
