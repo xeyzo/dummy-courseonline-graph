@@ -5,24 +5,24 @@
 
 
 
-- Trainer
-- [x]1 Trainer memiliki lebih dari satu course
-- [ ]Hanya user dengan role admin yang dapat menambahkan trainer
+#Trainer
+- [x] 1 Trainer memiliki lebih dari satu course
+- [ ] Hanya user dengan role admin yang dapat menambahkan trainer
 
 
-- Transaction
+#Transaction
 - [ ] Transaction dimiliki oleh User
 - [x] Transaction memiliki field invoiceNo yang bertipe UUID unik dan auto generate
 - [x] Transaksi memiliki status paid,pending,cancel
 - [x] Tiap transaksi memiliki detail, detail berisi course course yang dibeli
 - [ ] Ketika transaksi berubah menjadi paid, maka user akan memiliki course course yang ada didalam transaction detail
 
-- Course
+#Course
 - [x] 1 Course dimiliki oleh satu trainer
 - [x] Course memiliki banyak review
 - [ ] User dengan role admin yang bisa membuat course
 
-- User
+#User
 - [x] 1 user bisa memiliki banyak course
 - [x] 1 user bisa memiliki banyak course didalam cartnya
 - [x] 1 user bisa memiliki banyak course didalam whislist
