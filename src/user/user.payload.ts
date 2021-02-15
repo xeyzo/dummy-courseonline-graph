@@ -1,15 +1,8 @@
 import { InputType, Field, registerEnumType } from "@nestjs/graphql";
 import { MinLength, MaxLength, IsString } from "class-validator";
+import { Role } from './user.entity'
+import { bcrypt } from 'bcrypt'
 
-
-export enum Role{
-    user,
-    admin
-};
-
-registerEnumType(Role, {
-    name: 'Role',
-});
 export class CreateUser{
     @Field()
     @IsString()

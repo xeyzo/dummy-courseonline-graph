@@ -4,8 +4,8 @@ import { TransactionEntity } from '../transaction/transaction.entity'
 import { UserCourseEntity } from '../config/user-course.entity'
 
 export enum Role{
-    admin,
-    user
+    Admin,
+    User
 }
 
 registerEnumType(Role, {

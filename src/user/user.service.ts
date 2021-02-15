@@ -3,15 +3,26 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm';
 import { UserEntity } from './user.entity'
 import { CreateUser } from './user.payload';
+import { bcrypt } from 'bcrypt'
 
-// @Injectable()
-// export class CourseService{
-//     constructor(
-//         @InjectRepository(UserEntity) private userRepository : Repository<UserEntity>,
-//     ) {}
+
+@Injectable()
+export class UserService{
+    constructor(
+        @InjectRepository(UserEntity) private userRepository : Repository<UserEntity>,
+    ) {}
     
-//     async creatUser(createUser: CreateUser): Promise<UserEntity> {
-//         const { firstname, lastname, email, password, phonenumber, github, role } = CreateUser;
-//         const password = password
-//     }
-// }
+    async createUser(createUser : CreateUser): Promise<UserEntity>{       
+        const { firstname, lastname, email, password, phonenumber, github, role} = createUser;  
+        const user = this.userRepository.create({
+            firstname,
+            lastname,
+            email,
+            password,
+            phonenumber, 
+            github,
+            role
+        })
+        return this.userRepository.save(user)
+    }
+}
